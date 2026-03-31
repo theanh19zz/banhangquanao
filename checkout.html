@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the latest trends in fashion for 
+    women and men at TA FashionStyle. Shop our wide selection of clothes, bags,
+    jewelry, and more. Elevate your style with our curated collections.">
+    <meta name="keywords"
+        content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
+    <meta name="author" content="TA_FashionStyle">
+    <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <!-- css  -->
+    <link rel="stylesheet" href="Style/checkout.css">
+    <!-- animation icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        .tracking-info {
+            margin-top: 25px;
+            padding: 15px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .tracking-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .delivery-progress {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .delivery-progress::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .progress-step {
+            z-index: 1;
+            text-align: center;
+            font-size: 10px;
+            width: 25%;
+        }
+
+        .step-dot {
+            width: 24px;
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .progress-step.active .step-dot {
+            background: #27ae60;
+        }
+
+        .map-box {
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            height: 200px;
+        }
+    </style>
+    <title>TA__FashionStyle</title>
+</head>
+
+<body>
+    <div class="checkout" id="checkout-overlay">
+        <div class="checkout-container">
+            <div id="checkoutIcon" style="width: 200px; height: 200px;"></div>
+            <h4>cảm ơn bạn .Vui lòng thanh toán</h4>
+            <div>
+                <span>order:</span> <span id="id_order">1</span>
+                <span>total:</span> <span id="total_price"> $ 124.05</span>
+                <span>date:</span> <span id="order_date"></span>
+            </div>
+
+            <!-- Thời gian dự kiến và Bản đồ -->
+            <div class="tracking-info">
+                <div class="tracking-header">
+                    <ion-icon name="time-outline"></ion-icon>
+                    <span>Thời gian dự kiến giao hàng: <strong id="est_delivery"
+                            style="color: #27ae60;">...</strong></span>
+                </div>
+
+                <div class="delivery-progress">
+                    <div class="progress-step active">
+                        <div class="step-dot"><ion-icon name="checkmark"></ion-icon></div>
+                        <span>Đã đặt</span>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-dot"><ion-icon name="sync-outline"></ion-icon></div>
+                        <span>Xử lý</span>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-dot"><ion-icon name="airplane-outline"></ion-icon></div>
+                        <span>Đang giao</span>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-dot"><ion-icon name="home-outline"></ion-icon></div>
+                        <span>Đã nhận</span>
+                    </div>
+                </div>
+
+                <div class="tracking-header">
+                    <ion-icon name="map-outline"></ion-icon>
+                    <span>Vị trí đơn hàng hiện tại</span>
+                </div>
+                <div class="map-box">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119176.32625292437!2d105.772424!3d21.022736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bdadccc2d%3A0x86196a329744c803!2zSGFub2ksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1711234567890!5m2!1sen!2s"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Phần Thanh Toán QR Code Mới -->
+            <div class="qr-payment-section"
+                style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; text-align: center;">
+                <h5 style="margin: 0 0 10px 0; font-family: 'Poppins', sans-serif;">Quét mã để thanh toán</h5>
+                <!-- Ảnh QR mẫu từ VietQR (Thay MB-123456789 bằng Ngân hàng và STK thực tế của bạn) -->
+                <img src="data:image/png;base64,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"
+                    alt="QR Thanh Toán"
+                    style="width: 200px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <p style="margin-top: 10px; font-size: 0.9rem;">Nội dung CK: <strong id="transfer_content"
+                        style="color: #d63031;">...</strong></p>
+            </div>
+
+            <button id="back_btn" onclick="backHome();">back to home</button>
+        </div>
+    </div>
+    <script src="JavaScript/checkout.js"></script>
+
+    <!-- Script mô phỏng gửi đơn hàng về hệ thống Admin -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Lấy thông tin từ giao diện checkout (được JS có sẵn điền vào)
+            // Lưu ý: Trong thực tế, dữ liệu này nên lấy từ biến JS hoặc Cart Object
+            const orderId = document.getElementById('id_order').innerText || Math.floor(Math.random() * 10000);
+            const total = document.getElementById('total_price').innerText;
+            const date = new Date().toLocaleString('vi-VN');
+
+            // Cập nhật nội dung chuyển khoản tự động theo mã đơn hàng
+            document.getElementById('transfer_content').innerText = "THANHTOAN " + orderId;
+
+            // Cập nhật ngày hiển thị nếu chưa có
+            document.getElementById('order_date').innerText = date;
+
+            // Tự động tính thời gian dự kiến giao hàng (từ 3 đến 5 ngày tới)
+            const d = new Date();
+            const start = new Date(); start.setDate(d.getDate() + 3);
+            const end = new Date(); end.setDate(d.getDate() + 5);
+            const options = { day: '2-digit', month: '2-digit' };
+            const estStr = `${start.toLocaleDateString('vi-VN', options)} - ${end.toLocaleDateString('vi-VN', options)}, ${end.getFullYear()}`;
+            document.getElementById('est_delivery').innerText = estStr;
+
+            // Cập nhật tiến trình dựa trên trạng thái Admin đã duyệt hay chưa
+            let existingOrders = JSON.parse(localStorage.getItem('admin_orders')) || [];
+            const currentOrder = existingOrders.find(o => o.id == orderId);
+            if (currentOrder && currentOrder.status === 'Xong') {
+                const steps = document.querySelectorAll('.progress-step');
+                steps[1].classList.add('active'); // Bước Xử lý
+                steps[2].classList.add('active'); // Bước Đang giao
+            }
+
+            // 2. Tạo đối tượng đơn hàng
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const newOrder = {
+                id: orderId,
+                total: total,
+                date: date,
+                customer: "Khách hàng " + Math.floor(Math.random() * 100), // Giả lập tên khách
+                items: cartItems, // Lưu danh sách sản phẩm kèm size/màu
+                status: "Mới"
+            };
+
+            // 3. Lấy danh sách đơn hàng cũ từ LocalStorage
+            // Kiểm tra xem đơn hàng này đã lưu chưa (tránh F5 lưu trùng)
+            const exists = existingOrders.some(o => o.id == newOrder.id && o.date === newOrder.date);
+
+            if (!exists) {
+                existingOrders.push(newOrder);
+                // 4. Lưu lại vào LocalStorage để trang Admin đọc được
+                localStorage.setItem('admin_orders', JSON.stringify(existingOrders));
+                console.log("Đơn hàng đã được gửi tới Admin Dashboard");
+            }
+        });
+    </script>
+</body>
+
+</html>

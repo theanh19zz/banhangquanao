@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ký Gửi & Pre-loved - Thế Anh Shop</title>
+    <link rel="stylesheet" href="Style/main.css">
+    <link rel="stylesheet" href="Style/products.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        .preloved-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 5%;
+            margin-bottom: 40px;
+        }
+
+        .sell-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: -60px auto 40px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-sell {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .badge-preloved {
+            background: #27ae60;
+            color: white;
+            padding: 2px 8px;
+            font-size: 10px;
+            border-radius: 3px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .preloved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px 8%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container" id="header">
+        <div class="header_top">
+            <img src="images/logo_block.jpg" alt="logo" id="logo" style="width: 100px;">
+            <div class="header_actions">
+                <a href="#" class="icon-cart">
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <span id="cart-counter">0</span>
+                </a>
+            </div>
+        </div>
+        <nav>
+            <menu>
+                <ul style="display: flex; gap: 20px; list-style: none; justify-content: center;">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Cửa Hàng</a></li>
+                    <li><a href="pre_loved.html" style="color: #27ae60; font-weight: bold;">Ký Gửi</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
+
+    <div class="preloved-hero">
+        <h1>Trao Cơ Hội - Tặng Vòng Đời Mới</h1>
+        <p>Bán lại những món đồ bạn không còn dùng tới để nhận lại giá trị xứng đáng.</p>
+    </div>
+
+    <div class="sell-container">
+        <h3><ion-icon name="add-circle-outline"></ion-icon> Đăng Ký Ký Gửi</h3>
+        <form id="sellForm">
+            <div class="form-group">
+                <label>Chọn sản phẩm bạn muốn bán lại</label>
+                <select id="itemSelect" required>
+                    <option value="">-- Chọn sản phẩm đã mua --</option>
+                </select>
+            </div>
+            <div class="form-group" style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label>Giá mong muốn (đ)</label>
+                    <input type="text" id="itemPrice" placeholder="500.000" required>
+                </div>
+                <div style="flex: 1;">
+                    <label>Độ mới (%)</label>
+                    <select id="itemCondition">
+                        <option value="99%">Mới 99% (Like New)</option>
+                        <option value="95%">Mới 95%</option>
+                        <option value="90%">Mới 90%</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Mô tả tình trạng</label>
+                <textarea id="itemDesc" rows="2" placeholder="Sản phẩm còn nguyên mác, mặc 1 lần..."></textarea>
+            </div>
+            <div class="form-group" style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label>Ảnh thực tế</label>
+                    <input type="file" id="userPhotos" accept="image/*" multiple>
+                </div>
+                <div style="flex: 1;">
+                    <label>Video thực tế</label>
+                    <input type="file" id="userVideo" accept="video/*">
+                </div>
+            </div>
+            <button type="submit" class="btn-sell">Đăng Ký Bán Lại</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 30px;">Chợ Đồ Cũ (Pre-loved Marketplace)</h2>
+        <div class="preloved-grid" id="prelovedGrid">
+            <!-- Items will be loaded here -->
+        </div>
+    </div>
+
+    <div class="cart-section">
+        <div class="cart-header">
+            <h2>GIỎ HÀNG</h2>
+            <div class="closeCart"><ion-icon name="close-outline" id="closeCart"></ion-icon></div>
+        </div>
+        <div class="cart_products"></div>
+        <div class="cart_total">
+            <h3>Tổng cộng:</h3><span id="total_price"></span>
+        </div>
+        <div class="btn_control">
+            <button class="viewCart" onclick="viewCart();">Xem Giỏ</button>
+            <button class="checkout" onclick="checkOut();">Thanh Toán</button>
+        </div>
+    </div>
+
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/cart.js"></script>
+    <script>
+        // Dữ liệu mẫu ban đầu cho Pre-loved
+        const initialPreloved = [
+            {
+                id: 9991,
+                name: "[Pre-loved] Áo Hoodie Xanh",
+                price: "2.150.000đ",
+                images: ["images/man/hoodie-in-blue_01.webp"],
+                category: "Pre-loved",
+                condition: "95%",
+                seller: "Nguyễn Văn A"
+            },
+            {
+                id: 9992,
+                name: "[Pre-loved] Túi Xách Nylon",
+                price: "200.000đ",
+                images: ["images/Bags/p27-3_7e6d6ca6-5882-4c64-a166-577d894b0ac3.webp"],
+                category: "Pre-loved",
+                condition: "90%",
+                seller: "Trần Thị B"
+            }
+        ];
+
+        async function loadShopProducts() {
+            const res = await fetch('json/products.json');
+            const shopProducts = await res.json();
+            const select = document.getElementById('itemSelect');
+
+            shopProducts.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p.id;
+                option.textContent = p.name;
+                select.appendChild(option);
+            });
+            return shopProducts;
+        }
+
+        function renderPreloved(shopProducts = []) {
+            const userItems = JSON.parse(localStorage.getItem('user_preloved')) || [];
+            const allPreloved = [...initialPreloved, ...userItems];
+            const grid = document.getElementById('prelovedGrid');
+
+            grid.innerHTML = allPreloved.map(item => `
+                <div class="product-card" style="position: relative; border: 1px solid #eee; border-radius: 10px; overflow: hidden;">
+                    <span class="badge-preloved">Độ mới: ${item.condition}</span>
+                    <img src="${item.images[0]}" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="padding: 15px;">
+                        <h4 style="font-size: 14px; margin-bottom: 5px;">${item.name}</h4>
+                        <p style="color: #d63031; font-weight: bold;">${item.price}</p>
+                        <p style="font-size: 11px; color: #777;">Người bán: ${item.seller || 'Khách hàng'}</p>
+                        <button onclick="addPrelovedToCart(${item.id})" style="width: 100%; margin-top: 10px; padding: 8px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                            Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Cập nhật danh sách products toàn cục để cart.js có thể tìm thấy item khi add
+            if (typeof products !== 'undefined') {
+                products = [...products, ...allPreloved];
+            }
+        }
+
+        // Hàm riêng để add vào giỏ (vì cấu trúc id khác một chút)
+        function addPrelovedToCart(id) {
+            const userItems = JSON.parse(localStorage.getItem('user_preloved')) || [];
+            const allPreloved = [...initialPreloved, ...userItems];
+            const item = allPreloved.find(p => p.id === id);
+
+            if (item) {
+                // Giả lập đưa vào mảng products của cart.js
+                if (typeof products !== 'undefined') {
+                    if (!products.find(p => p.id === id)) products.push(item);
+                }
+                addToCart(id);
+                alert("Đã thêm món đồ Pre-loved vào giỏ hàng!");
+            }
+        }
+
+        // Hàm hỗ trợ chuyển File sang Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        document.getElementById('sellForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const shopProducts = await (await fetch('json/products.json')).json();
+            const selectedId = document.getElementById('itemSelect').value;
+            const baseProduct = shopProducts.find(p => p.id == selectedId);
+
+            // Xử lý ảnh và video thực tế
+            const photoFiles = document.getElementById('userPhotos').files;
+            const videoFile = document.getElementById('userVideo').files[0];
+
+            const userImages = await Promise.all(Array.from(photoFiles).map(file => fileToBase64(file)));
+            const userVideoData = videoFile ? await fileToBase64(videoFile) : null;
+
+            const newItem = {
+                id: Date.now(),
+                name: "[Pre-loved] " + baseProduct.name,
+                price: document.getElementById('itemPrice').value + "đ",
+                images: baseProduct.images, // Lấy ảnh gốc từ shop
+                evidenceImages: userImages,  // Ảnh thực tế khách gửi
+                evidenceVideo: userVideoData, // Video thực tế khách gửi
+                category: "Pre-loved",
+                condition: document.getElementById('itemCondition').value,
+                description: document.getElementById('itemDesc').value,
+                seller: "Bạn (Đang chờ duyệt)"
+            };
+
+            const userItems = JSON.parse(localStorage.getItem('user_preloved')) || [];
+            userItems.push(newItem);
+            localStorage.setItem('user_preloved', JSON.stringify(userItems));
+
+            alert("Gửi yêu cầu ký gửi thành công! Sản phẩm của bạn sẽ được hiển thị sau khi Admin duyệt.");
+            this.reset();
+            renderPreloved();
+        });
+
+        window.onload = async () => {
+            const shopProducts = await loadShopProducts();
+            renderPreloved(shopProducts);
+        };
+    </script>
+</body>
+
+</html>
